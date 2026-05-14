@@ -34,7 +34,7 @@ echo "📦 Installation de la liste complète des paquets..."
 # Liste organisée pour la lisibilité
 PACKAGES_SYSTEM=(
     curl wget git gitk grep tree nano zsh
-    sshpass telnet ftp
+    sshpass telnet ftp zip unzip
 )
 
 PACKAGES_DEV_C=(
@@ -46,7 +46,6 @@ PACKAGES_PYTHON=(
 )
 
 PACKAGES_WEB=(
-    npm
     php php-cli php-pgsql php-xml composer
 )
 
@@ -86,7 +85,20 @@ else
     echo "⚠️  Docker est déjà installé."
 fi
 
-# --- 4. OH MY ZSH ---
+# --- 4. NVM (Node Version Manager) ---
+if [ ! -d "$HOME/.nvm" ]; then
+    echo "📦 Installation de NVM..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    # Chargement temporaire pour installer Node
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install --lts
+    echo "✅ NVM et Node (LTS) installés."
+else
+    echo "⚠️  NVM est déjà installé."
+fi
+
+# --- 5. OH MY ZSH ---
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "🎨 Installation de Oh My Zsh..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -95,7 +107,7 @@ else
     echo "⚠️  Oh My Zsh est déjà installé."
 fi
 
-# --- 5. PLUGINS ZSH ---
+# --- 6. PLUGINS ZSH ---
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 
 echo "🔌 Vérification des plugins Zsh..."
@@ -103,17 +115,17 @@ install_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-synta
 install_plugin "zsh-completions" "https://github.com/zsh-users/zsh-completions"
 install_plugin "zsh-autosuggestions" "https://github.com/zsh-users/zsh-autosuggestions"
 
-# --- 6. CONFIGURATION DU .ZSHRC ---
+# --- 7. CONFIGURATION DU .ZSHRC ---
 ZSHRC="$HOME/.zshrc"
 echo "⚙️  Mise à jour de la configuration .zshrc..."
 
-# Configuration des plugins (Force l'ajout de docker)
-if grep -q "plugins=(.*docker.*)" "$ZSHRC"; then
-    echo "⚠️  Les plugins (incluant docker) sont déjà configurés."
+# Configuration des plugins (Force l'ajout de docker et nvm)
+if grep -q "plugins=(.*docker.*)" "$ZSHRC" && grep -q "plugins=(.*nvm.*)" "$ZSHRC"; then
+    echo "⚠️  Les plugins (incluant docker et nvm) sont déjà configurés."
 else
-    echo "🔧 Ajout des plugins (git, docker, highlighting, completions, autosuggestions)..."
+    echo "🔧 Ajout des plugins (git, docker, nvm, highlighting, completions, autosuggestions)..."
     # Cette regex remplace toute ligne plugins=(...) par la bonne configuration
-    sed -i 's/^plugins=(.*)/plugins=(git docker zsh-syntax-highlighting zsh-completions zsh-autosuggestions)/' "$ZSHRC"
+    sed -i 's/^plugins=(.*)/plugins=(git docker nvm zsh-syntax-highlighting zsh-completions zsh-autosuggestions)/' "$ZSHRC"
     echo "✅ Plugins mis à jour."
 fi
 
@@ -121,7 +133,7 @@ fi
 append_if_missing 'export DISPLAY=:0' "$ZSHRC"
 append_if_missing 'export PIP_BREAK_SYSTEM_PACKAGES=1' "$ZSHRC"
 
-# --- 7. AJOUT DES ALIAS (EN BLOC IDEMPOTENT) ---
+# --- 8. AJOUT DES ALIAS (EN BLOC IDEMPOTENT) ---
 HEADER="# --- MES ALIAS PERSO ---"
 
 if grep -Fq "$HEADER" "$ZSHRC"; then
@@ -133,6 +145,7 @@ else
 $HEADER
 alias c='clear'
 alias t='tree'
+alias dbstart="sudo service postgresql start && sudo service mysql start"
 
 # GIT
 alias ga="git add"
@@ -145,16 +158,13 @@ alias lz="lazygit"
 # SYSTÈME
 alias maj="sudo apt update && sudo apt upgrade -y"
 
-# PROJETS / EPITECH
-alias cs="/mnt/c/Users/Impierrooo/Documents/WORK/script/coding-style.sh . . | grep -Eo '[0-9]+ major, [0-9]+ minor, [0-9]+ info' | sed 's/.*/\x1b[31m&\x1b[0m/' && cat coding-style-reports.log && rm coding-style-reports.log"
-
 # WEB
 alias host="php -S localhost:8000"
 EOT
     echo "✅ Alias ajoutés avec succès."
 fi
 
-# --- 8. FINALISATION ---
+# --- 9. FINALISATION ---
 echo "🔄 Changement du shell par défaut vers Zsh..."
 # Redirige les erreurs au cas où le shell est déjà zsh
 sudo chsh -s $(which zsh) $USER > /dev/null 2>&1

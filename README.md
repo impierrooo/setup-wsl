@@ -12,13 +12,14 @@ Le script transforme une installation WSL vierge en une station de travail prêt
 ### 🛠️ Outils & Langages
 * **Système :** `git`, `curl`, `wget`, `tree`, `nano`, `sshpass`, `zip/unzip`.
 * **C / C++ :** `gcc`, `g++`, `make`, `valgrind`, `gdb` (Optimisé pour Epitech).
-* **Web :** Node.js (npm), PHP (8.x), Composer.
+* **Web :** Node.js (via **NVM**), PHP (8.x), Composer.
 * **Python :** `python3`, `pip`, `venv`.
 * **Bases de données :** Clients PostgreSQL et MySQL.
 
 ### DevOps
 * **🐳 Docker :** Engine + CLI + Compose Plugin (via le script officiel).
 * **💤 Lazygit :** Installation de la dernière version binaire.
+* **📦 NVM :** Gestionnaire de versions Node.js (Installation de la version LTS par défaut).
 
 ### 🎨 Shell & Terminal (Zsh)
 * Installation de **Zsh** et **Oh My Zsh**.
@@ -28,6 +29,7 @@ Le script transforme une installation WSL vierge en une station de travail prêt
   * `zsh-autosuggestions` (Complétion automatique basée sur l'historique).
   * `zsh-completions` (Tabulation avancée).
   * `docker` (Autocomplétion des commandes Docker).
+  * `nvm` (Autocomplétion des commandes NVM).
 
 ---
 
@@ -58,24 +60,7 @@ chmod +x setup_wsl.sh
 
 ## ⚠️ Configuration Post-Installation
 
-### 1. Alias cs (Coding Style)
-Le script crée un alias vers un script de coding style situé sur la partition Windows. **Vous devez modifier ce chemin si votre nom d'utilisateur Windows n'est pas `Impierrooo`.**
-
-Éditez le fichier `.zshrc` :
-
-```bash
-nano ~/.zshrc
-```
-
-Trouvez la ligne :
-
-```bash
-alias cs="/mnt/c/Users/Impierrooo/Documents/WORK/..."
-```
-
-Remplacez `Impierrooo` par votre véritable nom d'utilisateur Windows.
-
-### 2. Docker
+### Docker
 Si vous utilisez Docker, assurez-vous que **Docker Desktop** est lancé sur Windows pour que le démon soit accessible via WSL.
 
 ---
@@ -89,14 +74,14 @@ Voici les raccourcis ajoutés automatiquement à votre `.zshrc` :
 | **Général** | `c` | `clear` | Nettoie le terminal |
 | | `t` | `tree` | Affiche l'arborescence des fichiers |
 | | `maj` | `sudo apt update && upgrade` | Met à jour le système |
+| | `dbstart` | `sudo service ... start` | Démarre MySQL et PostgreSQL |
 | **Git** | `gs` | `git status` | Voir l'état des fichiers |
 | | `ga` | `git add` | Ajouter des fichiers à l'index |
 | | `gc` | `git commit -m` | Créer un commit |
 | | `gp` | `git push` | Envoyer vers le dépôt distant |
 | | `gpu` | `git pull` | Récupérer les modifications |
 | | `lz` | `lazygit` | Interface graphique Git terminal |
-| **Dev** | `cs` | *Script Epitech* | Vérification du Coding Style |
-| | `host` | `php -S localhost:8000` | Serveur PHP local rapide |
+| **Dev** | `host` | `php -S localhost:8000` | Serveur PHP local rapide |
 
 ---
 
