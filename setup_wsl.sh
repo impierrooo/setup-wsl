@@ -38,7 +38,7 @@ PACKAGES_SYSTEM=(
 )
 
 PACKAGES_DEV_C=(
-    gcc g++ cpp make valgrind emacs
+    gcc g++ gdb cpp make valgrind emacs
 )
 
 PACKAGES_PYTHON=(

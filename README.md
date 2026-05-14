@@ -11,7 +11,7 @@ Le script transforme une installation WSL vierge en une station de travail prêt
 
 ### 🛠️ Outils & Langages
 * **Système :** `git`, `curl`, `wget`, `tree`, `nano`, `sshpass`, `zip/unzip`.
-* **C / C++ :** `gcc`, `g++`, `make`, `valgrind`, `gdb` (Optimisé pour Epitech).
+* **C / C++ :** `gcc`, `g++`, `make`, `valgrind`, `gdb`.
 * **Web :** Node.js (via **NVM**), PHP (8.x), Composer.
 * **Python :** `python3`, `pip`, `venv`.
 * **Bases de données :** Clients PostgreSQL et MySQL.
