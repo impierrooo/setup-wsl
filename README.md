@@ -17,9 +17,9 @@ Le script transforme une installation WSL vierge en une station de travail prêt
 * **Bases de données :** Clients PostgreSQL et MySQL.
 
 ### DevOps
-* **🐳 Docker :** Engine + CLI + Compose Plugin (via le script officiel).
-* **💤 Lazygit :** Installation de la dernière version binaire.
-* **📦 NVM :** Gestionnaire de versions Node.js (Installation de la version LTS par défaut).
+* **🐳 Docker :** Engine + CLI + Compose Plugin.
+* **💤 Lazygit & Lazydocker :** Interfaces graphiques pour Git et Docker.
+* **📦 NVM :** Gestionnaire de versions Node.js.
 
 ### 🎨 Shell & Terminal (Zsh)
 * Installation de **Zsh** et **Oh My Zsh**.
@@ -80,7 +80,8 @@ Voici les raccourcis ajoutés automatiquement à votre `.zshrc` :
 | | `gc` | `git commit -m` | Créer un commit |
 | | `gp` | `git push` | Envoyer vers le dépôt distant |
 | | `gpu` | `git pull` | Récupérer les modifications |
-| | `lz` | `lazygit` | Interface graphique Git terminal |
+| | `lg` | `lazygit` | Interface graphique Git terminal |
+| | `ld` | `lazydocker` | Interface graphique Docker terminal |
 | **Dev** | `host` | `php -S localhost:8000` | Serveur PHP local rapide |
 
 ---

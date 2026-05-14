@@ -72,7 +72,20 @@ else
     echo "⚠️  Lazygit est déjà installé."
 fi
 
-# --- 3. INSTALLATION DOCKER (CE, CLI, COMPOSER-PLUGIN) ---
+# --- 3. INSTALLATION LAZYDOCKER ---
+if [ ! -f "/usr/local/bin/lazydocker" ]; then
+    echo "🐳 Installation de Lazydocker..."
+    LAZYDOCKER_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazydocker/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo lazydocker.tar.gz "https://github.com/jesseduffield/lazydocker/releases/latest/download/lazydocker_${LAZYDOCKER_VERSION}_Linux_x86_64.tar.gz"
+    tar xf lazydocker.tar.gz lazydocker
+    sudo install lazydocker /usr/local/bin
+    rm lazydocker lazydocker.tar.gz
+    echo "✅ Lazydocker installé."
+else
+    echo "⚠️  Lazydocker est déjà installé."
+fi
+
+# --- 4. INSTALLATION DOCKER (CE, CLI, COMPOSER-PLUGIN) ---
 # Le script officiel installe : docker-ce, docker-ce-cli, containerd.io, docker-buildx-plugin, docker-compose-plugin
 if ! command -v docker &> /dev/null; then
     echo "🐳 Installation de Docker (CE, CLI, Compose)..."
@@ -85,7 +98,7 @@ else
     echo "⚠️  Docker est déjà installé."
 fi
 
-# --- 4. NVM (Node Version Manager) ---
+# --- 5. NVM (Node Version Manager) ---
 if [ ! -d "$HOME/.nvm" ]; then
     echo "📦 Installation de NVM..."
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -98,7 +111,7 @@ else
     echo "⚠️  NVM est déjà installé."
 fi
 
-# --- 5. OH MY ZSH ---
+# --- 6. OH MY ZSH ---
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "🎨 Installation de Oh My Zsh..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -107,7 +120,7 @@ else
     echo "⚠️  Oh My Zsh est déjà installé."
 fi
 
-# --- 6. PLUGINS ZSH ---
+# --- 7. PLUGINS ZSH ---
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 
 echo "🔌 Vérification des plugins Zsh..."
@@ -115,7 +128,7 @@ install_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-synta
 install_plugin "zsh-completions" "https://github.com/zsh-users/zsh-completions"
 install_plugin "zsh-autosuggestions" "https://github.com/zsh-users/zsh-autosuggestions"
 
-# --- 7. CONFIGURATION DU .ZSHRC ---
+# --- 8. CONFIGURATION DU .ZSHRC ---
 ZSHRC="$HOME/.zshrc"
 echo "⚙️  Mise à jour de la configuration .zshrc..."
 
@@ -133,7 +146,7 @@ fi
 append_if_missing 'export DISPLAY=:0' "$ZSHRC"
 append_if_missing 'export PIP_BREAK_SYSTEM_PACKAGES=1' "$ZSHRC"
 
-# --- 8. AJOUT DES ALIAS (EN BLOC IDEMPOTENT) ---
+# --- 9. AJOUT DES ALIAS (EN BLOC IDEMPOTENT) ---
 HEADER="# --- MES ALIAS PERSO ---"
 
 if grep -Fq "$HEADER" "$ZSHRC"; then
@@ -153,7 +166,8 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gpu="git pull"
 alias gs="git status"
-alias lz="lazygit"
+alias lg="lazygit"
+alias ld="lazydocker"
 
 # SYSTÈME
 alias maj="sudo apt update && sudo apt upgrade -y"
@@ -164,7 +178,7 @@ EOT
     echo "✅ Alias ajoutés avec succès."
 fi
 
-# --- 9. FINALISATION ---
+# --- 10. FINALISATION ---
 echo "🔄 Changement du shell par défaut vers Zsh..."
 # Redirige les erreurs au cas où le shell est déjà zsh
 sudo chsh -s $(which zsh) $USER > /dev/null 2>&1
