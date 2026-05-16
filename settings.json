@@ -1,0 +1,303 @@
+{
+	"window.restoreWindows": "none",
+	"window.restoreFullscreen": true,
+	"window.newWindowDimensions": "maximized",
+	"window.autoDetectHighContrast": false,
+	"window.title": "${rootName}",
+	"window.autoDetectColorScheme": true,
+	"editor.indentSize": 4,
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.minimap.enabled": false,
+	"editor.multiCursorModifier": "ctrlCmd",
+	"editor.snippetSuggestions": "bottom",
+	"editor.renderWhitespace": "trailing",
+	"editor.linkedEditing": true,
+	"editor.occurrencesHighlight": "off",
+	"editor.suggest.insertMode": "replace",
+	"editor.acceptSuggestionOnCommitCharacter": false,
+	"editor.renderControlCharacters": true,
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always"
+	},
+	"editor.cursorBlinking": "expand",
+	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.guides.bracketPairs": true,
+	"editor.wordWrap": "on",
+	"editor.wordWrapColumn": 120,
+	"editor.dropIntoEditor.enabled": false,
+	"editor.stickyScroll.enabled": true,
+	"editor.unicodeHighlight.allowedCharacters": {
+		"é": true,
+		"è": true,
+		"ô": true,
+		"à": true
+	},
+	"editor.copyWithSyntaxHighlighting": false,
+	"editor.emptySelectionClipboard": false,
+	"editor.detectIndentation": false,
+	"editor.lineHeight": 20,
+	"editor.fontFamily": "JetBrains Mono",
+	"editor.fontLigatures": true,
+	"editor.fontSize": 14,
+	"editor.fontWeight": "300",
+	"editor.accessibilitySupport": "off",
+	"files.autoSave": "onFocusChange",
+	"files.eol": "\n",
+	"files.trimTrailingWhitespace": true,
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"explorer.autoReveal": false,
+	"explorer.compactFolders": false,
+	"explorer.decorations.badges": false,
+	"explorer.confirmPasteNative": false,
+	"editor.scrollbar.ignoreHorizontalScrollbarInContentHeight": true,
+	"workbench.tree.indent": 20,
+	"workbench.tree.renderIndentGuides": "always",
+	"workbench.editor.enablePreview": false,
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.startupEditor": "none",
+	"workbench.preferredDarkColorTheme": "Jetbrains Fleet",
+	"workbench.colorTheme": "Jetbrains Fleet",
+	"workbench.externalBrowser": "brave",
+	"workbench.editorAssociations": {
+		"*.copilotmd": "vscode.markdown.preview.editor",
+		"*.mat": "default"
+	},
+	"workbench.navigationControl.enabled": false,
+	"workbench.layoutControl.enabled": false,
+	"security.workspace.trust.untrustedFiles": "open",
+	"security.allowedUNCHosts": [
+		"wsl.localhost"
+	],
+	"emmet.showSuggestionsAsSnippets": true,
+	"emmet.triggerExpansionOnTab": true,
+	"emmet.includeLanguages": {
+		"javascript": "javascript",
+		"typescript": "typescript"
+	},
+	"terminal.integrated.cursorStyle": "line",
+	"terminal.integrated.fontFamily": "JetBrains Mono",
+	"terminal.integrated.defaultProfile.windows": "Git Bash",
+	"terminal.integrated.enableMultiLinePasteWarning": "never",
+	"terminal.integrated.defaultProfile.osx": "bash",
+	"terminal.integrated.profiles.osx": {
+		"bash": {
+			"path": "bash",
+			"args": [
+				"-l"
+			],
+			"icon": "terminal-bash"
+		},
+		"zsh": {
+			"path": "zsh",
+			"args": [
+				"-l"
+			]
+		},
+		"fish": {
+			"path": "fish",
+			"args": [
+				"-l"
+			]
+		},
+		"tmux": {
+			"path": "tmux",
+			"icon": "terminal-tmux"
+		},
+		"pwsh": {
+			"path": "pwsh",
+			"icon": "terminal-powershell"
+		},
+		"sh": {
+			"path": "/bin/sh"
+		}
+	},
+	"terminal.integrated.suggest.enabled": false,
+	"markdown.preview.doubleClickToSwitchToEditor": false,
+	"[markdown]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4,
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+	},
+	"scm.showHistoryGraph": false,
+	"git.ignoreMissingGitWarning": true,
+	"git.autofetch": true,
+	"git.enableSmartCommit": true,
+	"git.confirmSync": false,
+	"git.openRepositoryInParentFolders": "always",
+	"git.ignoreRebaseWarning": true,
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": true,
+		"markdown": true,
+		"scminput": true,
+		"git-commit": true,
+		"json": true,
+		"js": false
+	},
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"github.copilot.chat.commitMessageGeneration.instructions": [
+		{
+			"text": "Use gitmoji convention for commit message, with the correct emoji depending on the type of change."
+		}
+	],
+	"prettier.requireConfig": true,
+	"html.autoClosingTags": false,
+	"html.format.indentInnerHtml": true,
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features"
+	},
+	"javascript.autoClosingTags": false,
+	"javascript.updateImportsOnPaste.enabled": true,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"javascript.preferences.importModuleSpecifierEnding": "js",
+	"javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
+		"editor.suggest.showFunctions": false
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"typescript.updateImportsOnPaste.enabled": true,
+	"typescript.format.indentSwitchCase": true,
+	"typescript.preferences.preferTypeOnlyAutoImports": true,
+	"typescript.preferences.quoteStyle": "double",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"vue.format.script.initialIndent": true,
+	"vue.format.style.initialIndent": true,
+	"[vue]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"npm.keybindingsChangedWarningShown": true,
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"php.inlayHints.types.return": false,
+	"php.inlayHints.parameters.suppressNameMatchingValue": true,
+	"php.inlayHints.parameters.enabled": false,
+	"php.inlayHints.parameters.byReference": false,
+	"php.format.rules.arrayInitializersNewLineBeforeFirstElement": true,
+	"php.format.rules.ifStatementNewLineBeforeRightParen": true,
+	"php.format.rules.keepControlStatementsOnOneLine": false,
+	"php.format.rules.spaceBeforeColonInControlStatements": true,
+	"php.format.rules.arrayInitializersAlignKeyValuePairs": true,
+	"php.format.rules.alignMatchArmBodies": false,
+	"php.format.rules.openBraceOnNewLineForFunctions": false,
+	"php.format.rules.spaceBeforeParenthesesInArrowFunctions": false,
+	"[php]": {
+		"editor.tabSize": 4,
+		"editor.insertSpaces": true,
+		"editor.detectIndentation": false,
+		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+	},
+	"dart.cliConsole": "terminal",
+	"[dart]": {
+		"editor.tabSize": 4,
+		"editor.insertSpaces": false,
+		"editor.detectIndentation": false
+	},
+	"remote.SSH.remotePlatform": {
+		"baptistemiramont-server.eddi.cloud": "linux",
+		"oraclette.com/front": "linux",
+		"oraclette.com/back": "linux",
+		"dev-vps": "linux",
+		"sica": "linux"
+	},
+	"remote.SSH.defaultForwardedPorts": [],
+	"remote.SSH.configFile": "X:\\home\\baptiste\\.ssh\\config",
+	"extensions.ignoreRecommendations": true,
+	"settingsSync.ignoredExtensions": [
+		"manasxx.background-cover",
+		"akamud.vscode-theme-onelight",
+		"pranaygp.vscode-css-peek"
+	],
+	"plantuml.exportFormat": "png",
+	"plantuml.exportIncludeFolderHeirarchy": false,
+	"plantuml.exportSubFolder": false,
+	"[plantuml]": {
+		"editor.defaultFormatter": "jebbs.plantuml"
+	},
+	"diffEditor.ignoreTrimWhitespace": false,
+	"[ignore]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	},
+	"python.terminal.activateEnvironment": false,
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.black-formatter",
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4
+	},
+	"[sql]": {
+		"editor.defaultFormatter": "mtxr.sqltools"
+	},
+	"[dockerfile]": {
+		"editor.defaultFormatter": "ms-azuretools.vscode-containers"
+	},
+	"[dockercompose]": {
+		"editor.defaultFormatter": "ms-azuretools.vscode-containers"
+	},
+	"[shellscript]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	},
+	"[cpp]": {
+		"editor.defaultFormatter": null
+	},
+	"[c]": {
+		"editor.defaultFormatter": null
+	},
+	"[xml]": {
+		"editor.defaultFormatter": "redhat.vscode-xml"
+	},
+	"[yaml]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.defaultColorDecorators": "never",
+		"editor.quickSuggestions": {
+			"strings": "on"
+		}
+	},
+	"[caddyfile,*.caddy]": {
+		"editor.insertSpaces": false
+	},
+	"redhat.telemetry.enabled": false,
+	"[dotenv]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	},
+	"material-icon-theme.activeIconPack": "react",
+	"chat.commandCenter.enabled": false,
+	"chat.viewSessions.enabled": false,
+	"chat.agentsControl.enabled": false,
+	"chat.editing.confirmEditRequestRetry": false,
+	"accessibility.voice.speechLanguage": "fr-FR",
+	"workbench.browser.openLocalhostLinks": true,
+	"simpleBrowser.useIntegratedBrowser": true,
+	"remote.autoForwardPortsSource": "hybrid",
+	"workbench.secondarySideBar.showLabels": false,
+	"php.format.rules.openBraceOnNewLineForAnonymousClasses": true,
+	"sqltools.autoOpenSessionFiles": false,
+	"workbench.colorCustomizations": {
+		"editor.background": "#fbf7ef",
+		"sideBar.background": "#f7f3e8",
+		"activityBar.background": "#f7f3e8",
+		"editorGroupHeader.tabsBackground": "#f7f3e8",
+		"tab.activeBackground": "#fbf7ef",
+		"tab.inactiveBackground": "#ede8dc"
+	}
+}

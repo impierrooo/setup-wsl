@@ -195,7 +195,52 @@ $FOOTER
 EOT
 echo "✅ Alias mis à jour avec succès."
 
-# --- 10. FINALISATION ---
+# --- 10. INSTALLATION DES EXTENSIONS ANTIGRAVITY ---
+echo "🔌 Installation des extensions Antigravity..."
+
+# Liste des extensions actuellement utilisées
+EXTENSIONS=(
+    "jlcodes.antigravity-cockpit"
+    "ms-python.python"
+    "ms-python.debugpy"
+    "ms-python.vscode-python-envs"
+    "ms-python.black-formatter"
+    "ms-azuretools.vscode-containers"
+    "davidanson.vscode-markdownlint"
+    "bmewburn.vscode-intelephense-client"
+    "jebbs.plantuml"
+    "esbenp.prettier-vscode"
+    "foxundermoon.shell-format"
+    "mtxr.sqltools"
+    "redhat.vscode-xml"
+    "michaelzhou.fleet-theme"
+    "pkief.material-icon-theme"
+)
+
+# On vérifie si la commande antigravity est disponible ET si le tunnel de communication est actif
+if command -v antigravity &> /dev/null && [ -S "$VSCODE_IPC_HOOK_CLI" ]; then
+    # On récupère la liste des extensions déjà installées pour éviter les erreurs
+    INSTALLED_EXTS=$(antigravity --list-extensions 2>/dev/null)
+    
+    for ext in "${EXTENSIONS[@]}"; do
+        if echo "$INSTALLED_EXTS" | grep -iq "$ext"; then
+            echo "⚠️  Extension $ext déjà présente."
+        else
+            echo "📦 Installation de $ext..."
+            antigravity --install-extension "$ext" &> /dev/null
+            if [ $? -eq 0 ]; then
+                echo "✅ $ext installée."
+            else
+                echo "❌ Échec de l'installation de $ext (Vérifiez la connexion IDE)."
+            fi
+        fi
+    done
+else
+    echo "⚠️  L'IDE n'est pas détecté ou la commande 'antigravity' est absente."
+    echo "👉 Lancez ce script depuis le terminal intégré d'Antigravity pour installer les extensions."
+fi
+
+# --- 11. FINALISATION ---
 echo "🔄 Changement du shell par défaut vers Zsh..."
 # Redirige les erreurs au cas où le shell est déjà zsh
 sudo chsh -s $(which zsh) $USER > /dev/null 2>&1

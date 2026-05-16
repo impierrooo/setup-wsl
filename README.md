@@ -11,6 +11,7 @@ Il est conçu pour être **idempotent** : vous pouvez l'exécuter plusieurs fois
 Le script transforme une installation WSL vierge en une station de travail prête à l'emploi avec :
 
 ### 🛠️ Outils & Langages
+
 * **Système :** `git`, `curl`, `wget`, `tree`, `nano`, `fzf` (Fuzzy Finder), `sshpass`, `zip/unzip`.
 * **C / C++ :** `gcc`, `g++`, `make`, `valgrind`, `gdb`.
 * **Web :** Node.js (via **NVM**), PHP (8.x), Composer.
@@ -18,11 +19,13 @@ Le script transforme une installation WSL vierge en une station de travail prêt
 * **Bases de données :** Clients PostgreSQL et MySQL.
 
 ### DevOps
+
 * **🐳 Docker :** Engine + CLI + Compose Plugin.
 * **💤 Lazygit & Lazydocker :** Interfaces graphiques pour Git et Docker.
 * **📦 NVM :** Gestionnaire de versions Node.js.
 
 ### 🎨 Shell & Terminal (Zsh)
+
 * Installation de **Zsh** et **Oh My Zsh**.
 * Configuration automatique du thème `robbyrussell`.
 * **Plugins essentiels pré-configurés :**
@@ -32,6 +35,11 @@ Le script transforme une installation WSL vierge en une station de travail prêt
   * `zsh-autosuggestions` (Suggestions basées sur l'historique).
   * `zsh-completions` (Tabulations avancées).
   * `git`, `docker`, `nvm` (Autocomplétions dédiées).
+
+### 🚀 IDE (Antigravity)
+
+* Installation automatique de la **liste complète des 15 extensions** (Thèmes, Icones, Formatters, Python, PHP, etc.).
+* Prêt pour l'importation de votre configuration via le fichier `settings.json` inclus.
 
 ---
 
@@ -57,6 +65,13 @@ chmod +x setup_wsl.sh
 ```
 
 > **Note :** Le script demande votre mot de passe `sudo` au démarrage pour installer les paquets.
+
+**4. Finaliser la configuration Antigravity :**
+
+Le script installe les 15 extensions nécessaires. Pour retrouver votre thème et vos réglages (Police, Indentation, etc.), copiez le contenu de `settings.json` présent dans ce dépôt dans vos paramètres Antigravity :
+
+* Chemin Windows : `%APPDATA%\Antigravity\User\settings.json`
+* Ou via l'IDE : `Ctrl + Shift + P` > `Open User Settings (JSON)`
 
 ---
 
