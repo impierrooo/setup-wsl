@@ -33,7 +33,7 @@ echo "📦 Installation de la liste complète des paquets..."
 
 # Liste organisée pour la lisibilité
 PACKAGES_SYSTEM=(
-    curl wget git gitk grep tree nano zsh
+    curl wget git gitk grep tree nano zsh fzf
     sshpass telnet ftp zip unzip
 )
 
@@ -132,32 +132,49 @@ install_plugin "zsh-autosuggestions" "https://github.com/zsh-users/zsh-autosugge
 ZSHRC="$HOME/.zshrc"
 echo "⚙️  Mise à jour de la configuration .zshrc..."
 
-# Configuration des plugins (Force l'ajout de docker et nvm)
-if grep -q "plugins=(.*docker.*)" "$ZSHRC" && grep -q "plugins=(.*nvm.*)" "$ZSHRC"; then
-    echo "⚠️  Les plugins (incluant docker et nvm) sont déjà configurés."
-else
-    echo "🔧 Ajout des plugins (git, docker, nvm, highlighting, completions, autosuggestions)..."
-    # Cette regex remplace toute ligne plugins=(...) par la bonne configuration
-    sed -i 's/^plugins=(.*)/plugins=(git docker nvm zsh-syntax-highlighting zsh-completions zsh-autosuggestions)/' "$ZSHRC"
-    echo "✅ Plugins mis à jour."
+# Initialisation de base si le fichier est vide ou sans Oh My Zsh
+if ! grep -q "source \$ZSH/oh-my-zsh.sh" "$ZSHRC"; then
+    echo "📝 Ajout de la configuration de base Oh My Zsh..."
+    # On insère au début du fichier
+    sed -i '1i export ZSH="$HOME/.oh-my-zsh"\nZSH_THEME="robbyrussell"\nplugins=(git)\nsource $ZSH/oh-my-zsh.sh\n' "$ZSHRC"
 fi
+
+# Configuration du thème
+THEME="robbyrussell" 
+echo "🎨 Application du thème Zsh ($THEME)..."
+sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"$THEME\"/" "$ZSHRC"
+
+# Configuration des plugins
+echo "🔧 Mise à jour des plugins dans .zshrc..."
+PLUGINS="git docker nvm fzf sudo zsh-syntax-highlighting zsh-completions zsh-autosuggestions"
+sed -i "s/^plugins=(.*/plugins=($PLUGINS)/" "$ZSHRC"
+echo "✅ Plugins mis à jour : $PLUGINS"
 
 # Variables d'environnement
 append_if_missing 'export DISPLAY=:0' "$ZSHRC"
 append_if_missing 'export PIP_BREAK_SYSTEM_PACKAGES=1' "$ZSHRC"
 
-# --- 9. AJOUT DES ALIAS (EN BLOC IDEMPOTENT) ---
+# --- 9. AJOUT DES ALIAS (MAINTENANCE FACILE) ---
 HEADER="# --- MES ALIAS PERSO ---"
+FOOTER="# --- FIN DES ALIAS PERSO ---"
 
-if grep -Fq "$HEADER" "$ZSHRC"; then
-    echo "⚠️  Le bloc d'alias personnels existe déjà."
-else
-    echo "✍️  Ajout de tes alias..."
-    cat <<EOT >> "$ZSHRC"
+# On supprime l'ancien bloc s'il existe pour pouvoir le mettre à jour
+if grep -q "$HEADER" "$ZSHRC"; then
+    echo "🔧 Mise à jour du bloc d'alias..."
+    sed -i "/$HEADER/,/$FOOTER/d" "$ZSHRC"
+    # Au cas où il n'y avait pas de footer (ancienne version)
+    sed -i "/$HEADER/d" "$ZSHRC"
+fi
+
+echo "✍️  Ajout des alias..."
+cat <<EOT >> "$ZSHRC"
 
 $HEADER
 alias c='clear'
 alias t='tree'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ll="ls -lah"
 alias dbstart="sudo service postgresql start && sudo service mysql start"
 
 # GIT
@@ -174,9 +191,9 @@ alias maj="sudo apt update && sudo apt upgrade -y"
 
 # WEB
 alias host="php -S localhost:8000"
+$FOOTER
 EOT
-    echo "✅ Alias ajoutés avec succès."
-fi
+echo "✅ Alias mis à jour avec succès."
 
 # --- 10. FINALISATION ---
 echo "🔄 Changement du shell par défaut vers Zsh..."
