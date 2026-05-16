@@ -240,7 +240,21 @@ else
     echo "👉 Lancez ce script depuis le terminal intégré d'Antigravity pour installer les extensions."
 fi
 
-# --- 11. FINALISATION ---
+# --- 11. CONFIGURATION DES PARAMÈTRES ANTIGRAVITY ---
+echo "⚙️  Application des paramètres settings.json..."
+
+SETTINGS_SRC="$(dirname "$0")/settings.json"
+SETTINGS_DEST="$HOME/.antigravity-server/data/Machine/settings.json"
+
+if [ -f "$SETTINGS_SRC" ]; then
+    mkdir -p "$(dirname "$SETTINGS_DEST")"
+    cp "$SETTINGS_SRC" "$SETTINGS_DEST"
+    echo "✅ Paramètres appliqués vers $SETTINGS_DEST"
+else
+    echo "⚠️  Fichier $SETTINGS_SRC non trouvé, saut de la configuration."
+fi
+
+# --- 12. FINALISATION ---
 echo "🔄 Changement du shell par défaut vers Zsh..."
 # Redirige les erreurs au cas où le shell est déjà zsh
 sudo chsh -s $(which zsh) $USER > /dev/null 2>&1

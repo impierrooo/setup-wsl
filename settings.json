@@ -4,7 +4,7 @@
 	"window.newWindowDimensions": "maximized",
 	"window.autoDetectHighContrast": false,
 	"window.title": "${rootName}",
-	"window.autoDetectColorScheme": true,
+	"window.autoDetectColorScheme": false,
 	"editor.indentSize": 4,
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false,
@@ -59,7 +59,8 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.startupEditor": "none",
 	"workbench.preferredDarkColorTheme": "Jetbrains Fleet",
-	"workbench.colorTheme": "Jetbrains Fleet",
+	"workbench.preferredLightColorTheme": "Default Light Modern",
+	"workbench.colorTheme": "Default Light Modern",
 	"workbench.externalBrowser": "brave",
 	"workbench.editorAssociations": {
 		"*.copilotmd": "vscode.markdown.preview.editor",
@@ -293,11 +294,11 @@
 	"php.format.rules.openBraceOnNewLineForAnonymousClasses": true,
 	"sqltools.autoOpenSessionFiles": false,
 	"workbench.colorCustomizations": {
-		"editor.background": "#fbf7ef",
-		"sideBar.background": "#f7f3e8",
-		"activityBar.background": "#f7f3e8",
-		"editorGroupHeader.tabsBackground": "#f7f3e8",
-		"tab.activeBackground": "#fbf7ef",
-		"tab.inactiveBackground": "#ede8dc"
+		"editor.background": "#f2f0e6",
+		"sideBar.background": "#e8e6d9",
+		"activityBar.background": "#e8e6d9",
+		"editorGroupHeader.tabsBackground": "#e8e6d9",
+		"tab.activeBackground": "#f2f0e6",
+		"tab.inactiveBackground": "#dbd9ca"
 	}
 }
